@@ -17,8 +17,8 @@ const sanityClient = require('@sanity/client').default;
 
 // Initialize your Sanity client with appropriate options
 const sanityClientOptions = {
-  projectId: 'rqrh1tf2',
-  dataset: 'development',
+  projectId: process.env.PROJECT_ID,
+  dataset: process.env.DATASET,
   apiVersion: '2023-08-01',
   useCdn: true,
   token: process.env.TOKEN,
