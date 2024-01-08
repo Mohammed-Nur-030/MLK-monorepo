@@ -143,13 +143,13 @@ const Menu = ({ menuData, additionalData }: MenuProps) => {
   //   try {
   //     setLoading(true);
   //     const menuData = await client.fetch(menuQuery);
-  //     console.log("menuData",menuData)
+  //     //console.log("menuData",menuData)
   //     setMenu(menuData);
   //     const additionalData = await client.fetch(additonalQuery);
   //     setAdditional(additionalData);
 
   //   } catch (error) {
-  //     console.error('Error fetching data from Sanity:', error);
+  //     //console.error('Error fetching data from Sanity:', error);
   //   } finally {
   //     setLoading(false); // Update loading state to false after fetching data
   //   }
@@ -176,31 +176,31 @@ const Menu = ({ menuData, additionalData }: MenuProps) => {
     const lastWord = dayWords[dayWords.length - 1].toLowerCase();
     return lastWord === day.toLowerCase();
   });
-  console.log("vegDaysArray", vegDaysArray)
-  console.log("foundObjectVeg", foundObjectVeg)
+  //console.log("vegDaysArray", vegDaysArray)
+  //console.log("foundObjectVeg", foundObjectVeg)
   const handleToggle = () => {
     setVegHead(!vegHead); // Toggle the state between true and false
   };
 
-  // console.log("vegDaysArray");
-  // console.log(vegDaysArray);
-  // console.log("foundObjectVeg")
-  // console.log(foundObjectVeg)
+  // //console.log("vegDaysArray");
+  // //console.log(vegDaysArray);
+  // //console.log("foundObjectVeg")
+  // //console.log(foundObjectVeg)
 
 
-  // console.log("menu")
-  // console.log(menu)
-  // console.log("foundObject")
-  // console.log(foundObject)
-  // console.log("foundObjectveg")
-  // console.log(foundObjectVeg)
-  // console.log("newMenu")
-  // console.log(newMenu)
+  // //console.log("menu")
+  // //console.log(menu)
+  // //console.log("foundObject")
+  // //console.log(foundObject)
+  // //console.log("foundObjectveg")
+  // //console.log(foundObjectVeg)
+  // //console.log("newMenu")
+  // //console.log(newMenu)
 
-  // console.log("additional")
-  // console.log(additional)
-  // console.log("newAdditional")
-  // console.log(newAdditional)
+  // //console.log("additional")
+  // //console.log(additional)
+  // //console.log("newAdditional")
+  // //console.log(newAdditional)
 
 
   if (loading) {
@@ -470,7 +470,7 @@ const Menu = ({ menuData, additionalData }: MenuProps) => {
   )
 }
 export async function getServerSideProps() {
-  console.log("Inside Server side ");
+  //console.log("Inside Server side ");
 
   const menuQuery = `*[_type == "meal"]`;
   const additionalQuery = `*[_type == "additional"]`;
@@ -486,7 +486,7 @@ export async function getServerSideProps() {
       },
     };
   } catch (error) {
-    console.error('Error fetching data from Sanity:', error);
+    //console.error('Error fetching data from Sanity:', error);
     return {
       props: {
         menuData: null,

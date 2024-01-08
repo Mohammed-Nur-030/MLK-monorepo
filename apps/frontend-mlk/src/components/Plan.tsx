@@ -44,15 +44,15 @@ type  ImageUrl={
 
 
 const Plan:React.FC<PlanProps> = ({ newMenu, category }) => {
-    console.log("newMenu",newMenu)
-    console.log("category",category)
+    //console.log("newMenu",newMenu)
+    //console.log("category",category)
     const foundObject = newMenu.filter((obj) => {
         const dayWords = obj.day.split(' ');
         const lastWord = dayWords[dayWords.length - 1].toLowerCase();
         return lastWord === category.toLowerCase();
     });
 
-    console.log(foundObject)
+    //console.log(foundObject)
     return (
         <section className="plan">
             <div className="container plan-container  mx-auto">
@@ -65,8 +65,8 @@ const Plan:React.FC<PlanProps> = ({ newMenu, category }) => {
                             foundObject[0]?.namesAndVeg[0].image ? (
 
                                 foundObject[0]?.namesAndVeg.map((item, index) => { 
-                                    console.log("item")
-                                    console.log(item)
+                                    //console.log("item")
+                                    //console.log(item)
                                     const imageUrl = urlFor(item?.image?.asset?._ref).url();
                                   
                                             return (

@@ -27,18 +27,18 @@ type PlanVegProps={
 }
 
 const PlanVeg:React.FC<PlanVegProps> = ({vegDaysArray,category}:PlanVegProps) => {
-    console.log("inisde plan veg")
+    ////console.log("inisde plan veg")
     
   
-    console.log(vegDaysArray)
-    console.log(category)
+    ////console.log(vegDaysArray)
+    ////console.log(category)
     const foundObject = vegDaysArray.filter((obj) => {
         const dayWords = obj.day.split(' ');
         const lastWord = dayWords[dayWords.length - 1].toLowerCase();
         return lastWord === category.toLowerCase();
     });
 
-    console.log(foundObject)
+    ////console.log(foundObject)
     return (
         <section className="plan">
             <div className="container plan-container  mx-auto">
@@ -51,8 +51,8 @@ const PlanVeg:React.FC<PlanVegProps> = ({vegDaysArray,category}:PlanVegProps) =>
                             foundObject[0]?.namesAndVeg[0].image ? (
 
                                 foundObject[0]?.namesAndVeg.map((item:{image:ImageUrl,name:string,veg:boolean,_key:string}, index:number) => { 
-                                    console.log("item")
-                                    console.log(item)
+                                    ////console.log("item")
+                                    ////console.log(item)
                                   
                                             return (
                                                 <div key={index} className='plan-image-container flex flex-col border-2 py-2 px-2 bg-white rounded-xl shadow-xl my-4 mx-2 '>

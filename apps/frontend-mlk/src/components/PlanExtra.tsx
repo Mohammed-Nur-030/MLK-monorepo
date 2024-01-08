@@ -42,10 +42,10 @@ type  ImageUrl={
   }
 
 const PlanExtra:React.FC<PlanextraProps> = ({ newAdditional, extra }) => {
-    console.log("newAdditional")
-    console.log(newAdditional)
-    console.log("extra",extra)
-    console.log(extra)
+    //console.log("newAdditional")
+    //console.log(newAdditional)
+    //console.log("extra",extra)
+    //console.log(extra)
     const foundObject = newAdditional.filter((obj) => {
         const target=extra.toLowerCase();
       
@@ -57,8 +57,8 @@ const PlanExtra:React.FC<PlanextraProps> = ({ newAdditional, extra }) => {
        
     });
 
-    console.log("foundObject")
-    console.log(foundObject)
+    //console.log("foundObject")
+    //console.log(foundObject)
     return (
         <section className="plan">
             <div className="container  plan-extra-container mx-auto">

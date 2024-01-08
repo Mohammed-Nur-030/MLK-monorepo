@@ -7,8 +7,8 @@ interface FilterExtraProps {
 }
 
 const FilterExtra: React.FC<FilterExtraProps> = ({ AdditionalData, extra, setExtra }) => {
-  console.log("AdditionalData");
-  console.log(AdditionalData);
+  //console.log("AdditionalData");
+  //console.log(AdditionalData);
 
   const filterHandler = (title: string) => {
     setExtra(title);
