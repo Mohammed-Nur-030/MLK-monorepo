@@ -15,7 +15,7 @@ const FilterExtra: React.FC<FilterExtraProps> = ({ AdditionalData, extra, setExt
   };
 
   return (
-    <div>
+    <div className=' '>
       <div className="filter-section flex flex-wrap pt-6 justify-center">
         {AdditionalData?.map((data) => (
           <div className="w-full my-2 filter-btn" key={data.id}>

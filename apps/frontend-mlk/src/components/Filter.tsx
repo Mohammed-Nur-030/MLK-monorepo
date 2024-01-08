@@ -22,8 +22,8 @@ const Filter: React.FC<FilterProps> = ({ filterData, category, setCategory, veg,
   };
 
   return (
-    <div>
-      <div className="flex justify-center items-center gap-4">
+    <div className=''>
+      <div className="flex justify-center items-center gap-4  mx-auto">
         <div
           onClick={() => setVeg(true)}
           className={getButtonStyle(veg)}

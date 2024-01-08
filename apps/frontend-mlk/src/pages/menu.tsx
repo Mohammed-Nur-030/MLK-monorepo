@@ -15,10 +15,11 @@ import Head from 'next/head';
 const sanityClient = require('@sanity/client').default;
 
 
+
 // Initialize your Sanity client with appropriate options
 const sanityClientOptions = {
-  projectId: process.env.PROJECT_ID,
-  dataset: process.env.DATASET,
+  projectId:"rqrh1tf2",
+  dataset: "development",
   apiVersion: '2023-08-01',
   useCdn: true,
   token: process.env.TOKEN,
@@ -391,7 +392,7 @@ const Menu = ({ menuData, additionalData }: MenuProps) => {
 
               <div className=" weekly-menu-child1 category w-1/4 flex justify-start items-start flex-col bg-slate-900 rounded-xl shadow-md shadow-white py-6 ">
                 <h2 className=' font-bold w-full  py-2  flex justify-center items-center text-yellow-100 '>Weekly Menu</h2>
-                <div className='filter-button-container'>
+                <div className='filter-button-container  flex-col'>
 
                   <Filter
                     filterData={filterData}
@@ -405,7 +406,7 @@ const Menu = ({ menuData, additionalData }: MenuProps) => {
 
                   <div className=' rounded-xl w-full '>
                     {/* <hr /> */}
-                    <h2 className='font-bold w-full  py-2  flex justify-center items-center  text-yellow-100'>Additionals:</h2>
+                    {/* <h2 className='font-bold w-full  py-2  flex justify-center items-center  text-yellow-100'>Additionals:</h2> */}
 
                     <FilterExtra
                       AdditionalData={AdditionalData}
