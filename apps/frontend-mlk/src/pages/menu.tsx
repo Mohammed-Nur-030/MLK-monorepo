@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import { useState } from 'react'
 import { urlFor } from '../client';
-import { Switch } from "antd";
 import Loader from '../components/Loader';
 import Filter from '../components/Filter';
 import Plan from '../components/Plan';
@@ -29,63 +28,111 @@ const client = sanityClient(sanityClientOptions);
 
 const filterData = [
   {
-    id: "1",
+    id: 1,
     title: "Monday",
   },
   {
-    id: "2",
+    id: 2,
     title: "Tuesday",
   },
   {
-    id: "3",
+    id: 3,
     title: "Wednesday",
   },
   {
-    id: "4",
+    id: 4,
     title: "Thursday",
   },
   {
-    id: "5",
+    id: 5,
     title: "Friday",
   },
   {
-    id: "6",
+    id: 6,
     title: "Saturday",
   },
   {
-    id: "7",
+    id: 7,
     title: "Sunday",
   },
 ];
+
 const AdditionalData = [
   {
-    id: "1",
+    id: 1,
     title: "Salads",
   },
   {
-    id: "2",
+    id: 2,
     title: "Addons",
   },
   {
-    id: "3",
+    id: 3,
     title: "Beverages",
   },
 ];
 
-const Menu = ({ menuData, additionalData }) => {
+type ImageUrl = {
+  asset: { _ref: string, _type: string },
+}
+type slugType = {
+  current: string,
+  _type: string,
+}
+type menuDataType = {
+  day: string,
+  namesAndVeg: [{ image: ImageUrl, name: string, veg: boolean, _key: string }],
+  price: string,
+  slug: slugType,
+  _createdAt: string,
+  _id: string,
+  _rev: string,
+  _type: string,
+  _updatedAt: string,
+  description?: string,
+}
+type additionalDataType = {
+  items: [{ image: ImageUrl, name: string, veg: boolean, _key: string }],
+  price: string,
+  slug: slugType,
+  _createdAt: string,
+  _id: string,
+  _rev: string,
+  _type: string,
+  _updatedAt: string,
+  title: string
+}
+
+type MenuProps = {
+  menuData: menuDataType[],
+  additionalData: additionalDataType[]
+}
+interface AdditionalItem {
+  items: { image: ImageUrl, name: string, veg: boolean, _key: string }[];
+  price: number;
+  slug: slugType;
+  title: string;
+  _createdAt: string;
+  _id: string;
+  _rev: string;
+  _type: string;
+  _updatedAt: string;
+}
+
+const Menu = ({ menuData, additionalData }: MenuProps) => {
   const [mobileMenu, setMobileMenu] = useState(false)
   const [menu, setMenu] = useState(menuData);
-
   const [loading, setLoading] = useState(false) // Initialize loading state as true
-  const [category, setCategory] = useState(filterData[0].title);
-  const [extra, setExtra] = useState(AdditionalData[0].title);
-  const [additional, setAdditional] = useState(additionalData);
+  const [category, setCategory] = useState<string>(filterData[0].title);
+  const [extra, setExtra] = useState<string>(AdditionalData[0].title);
+  const [additional, setAdditional] = useState<additionalDataType[]>(additionalData);
   const [veg, setVeg] = useState(true);
   const [vegHead, setVegHead] = useState(true);
 
   const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'Asia/Kolkata' };
   const today = new Date();
   const day = today.toLocaleDateString('en-US', { weekday: 'long', timeZone: 'Asia/Kolkata' });
+
 
 
 
@@ -114,9 +161,8 @@ const Menu = ({ menuData, additionalData }) => {
   // }, []);
 
 
-  const newMenu = menu.filter((obj) => !obj.day.startsWith("Veg"));;
+  const newMenu = menu.filter((obj) => !obj.day.startsWith("Veg"));
   const newAdditional = additional;
-  console.log("newMenu", newMenu)
 
   const foundObject = newMenu.filter((obj) => {
     const dayWords = obj.day.split(' ');
@@ -130,8 +176,8 @@ const Menu = ({ menuData, additionalData }) => {
     const lastWord = dayWords[dayWords.length - 1].toLowerCase();
     return lastWord === day.toLowerCase();
   });
-  // console.log("vegDaysArray",vegDaysArray)
-  // console.log("foundObjectVeg",foundObjectVeg)
+  console.log("vegDaysArray", vegDaysArray)
+  console.log("foundObjectVeg", foundObjectVeg)
   const handleToggle = () => {
     setVegHead(!vegHead); // Toggle the state between true and false
   };
@@ -237,7 +283,13 @@ const Menu = ({ menuData, additionalData }) => {
             <h2 className='today-meal-heading py-4 bg-yellow-100 text-slate-900  text-center rounded-t-xl font-semibold flex justify-center items-center text-lg  sm:text-lg md:text-lg lg:text-xl xl:text-2xl px-6  '>
               Handcrafted Special Combo Just For you
               <div className='ml-auto'>
-                 {/* <Switch checkedChildren="Non-veg" unCheckedChildren="veg" onChange={handleToggle}  defaultChecked className='bg-green-400 checked:bg-red-400'/>  */}
+               
+
+                <button  className={`px-4 py-2 text-sm rounded-full text-white font-bold focus:outline-none transition ${
+          vegHead ? 'bg-green-500' : 'bg-red-500'
+        }`} onClick={handleToggle}>
+                  {vegHead ? 'Veg' : 'Non-Veg'}
+                </button>
               </div>
 
             </h2>
@@ -246,7 +298,8 @@ const Menu = ({ menuData, additionalData }) => {
               <div className="w-[70%]  today-menu-child1 flex justify-center items-center flex-wrap py-4  ">
                 {
                   vegHead ? (
-                    foundObject[0]?.namesAndVeg.map((item, index) => {
+                    foundObject[0]?.namesAndVeg.map((item: { image: ImageUrl, name: string, veg: boolean, _key: string }, index: number) => {
+
                       return (
                         <div key={index} className="w-60 h-60 todays-food  mx-2 shadow-sm shadow-white rounded-xl mt-2"
                           style={{
@@ -257,7 +310,8 @@ const Menu = ({ menuData, additionalData }) => {
                       )
                     })
                   ) : (
-                    foundObjectVeg[0]?.namesAndVeg.map((item, index) => {
+                    foundObjectVeg[0]?.namesAndVeg.map((item: { image: ImageUrl, name: string, veg: boolean, _key: string }, index: number) => {
+
                       return (
                         <div key={index} className="w-60 h-60 todays-food  mx-2 shadow-sm shadow-white rounded-xl mt-2"
                           style={{
@@ -281,14 +335,14 @@ const Menu = ({ menuData, additionalData }) => {
 
                     {
                       vegHead ? (
-                        foundObject[0]?.namesAndVeg.map((item, index) => {
+                        foundObject[0]?.namesAndVeg.map((item: { image: ImageUrl, name: string, veg: boolean, _key: string }, index: number) => {
                           return (
                             <li key={index}>{item.name}</li>
 
                           )
                         })
                       ) : (
-                        foundObjectVeg[0]?.namesAndVeg.map((item, index) => {
+                        foundObjectVeg[0]?.namesAndVeg.map((item: { image: ImageUrl, name: string, veg: boolean, _key: string }, index: number) => {
                           return (
                             <li key={index}>{item.name}</li>
 
@@ -368,9 +422,6 @@ const Menu = ({ menuData, additionalData }) => {
               </div>
 
               <div className="content weekly-menu-child2 w-3/4 mx-2 rounded-xl ml-2 shadow-md shadow-white ">
-                {
-                  console.log("before rendering", veg, category)
-                }
                 {
                   veg ? (
                     <PlanVeg vegDaysArray={vegDaysArray} category={category} />

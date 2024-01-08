@@ -2,10 +2,49 @@ import React from 'react'
 import { urlFor } from '../client'
 
 
-const PlanExtra = ({ newAdditional, extra }) => {
+type  ImageUrl={
+    asset:{_ref:string,_type:string},
+   }
+   type  slugType={
+    current:string,
+    _type:string,
+   }
+   type menuDataType={
+     day:string,
+     namesAndVeg:[{image:ImageUrl,name:string,veg:boolean,_key:string}],
+     price:string,
+     slug:slugType,
+     _createdAt:string,
+     _id:string,
+     _rev:string,
+     _type:string,
+     _updatedAt:string,
+     description?:string,
+   
+   }
+   type additionalDataType={
+     items:[{image:ImageUrl,name:string,veg:boolean,_key:string}],
+     price:string,
+     slug:slugType,
+     _createdAt:string,
+     _id:string,
+     _rev:string,
+     _type:string,
+     _updatedAt:string,
+     title:string
+   }
+   
+   
+ 
+  type PlanextraProps={
+    newAdditional:additionalDataType[],
+    extra:string
+  }
+
+const PlanExtra:React.FC<PlanextraProps> = ({ newAdditional, extra }) => {
     console.log("newAdditional")
     console.log(newAdditional)
-    console.log("extra")
+    console.log("extra",extra)
     console.log(extra)
     const foundObject = newAdditional.filter((obj) => {
         const target=extra.toLowerCase();

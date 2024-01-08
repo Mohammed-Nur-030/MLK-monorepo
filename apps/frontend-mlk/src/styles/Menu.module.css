@@ -1,0 +1,20 @@
+.toggle-switch {
+    background-color: #ccc;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    transition: background-color 0.3s;
+  }
+  
+  .toggle-switch.on {
+    background-color: #4caf50;
+  }
+  
+  .toggle-switch.off {
+    background-color: #f44336;
+  }
+  

@@ -3,7 +3,47 @@ import React from 'react'
 // import { urlFor } from '../client'
 
 
-const Plan = ({ newMenu, category }) => {
+type  ImageUrl={
+    asset:{_ref:string,_type:string},
+   }
+   type  slugType={
+    current:string,
+    _type:string,
+   }
+   type menuDataType={
+     day:string,
+     namesAndVeg:[{image:ImageUrl,name:string,veg:boolean,_key:string}],
+     price:string,
+     slug:slugType,
+     _createdAt:string,
+     _id:string,
+     _rev:string,
+     _type:string,
+     _updatedAt:string,
+     description?:string,
+   
+   }
+   type additionalDataType={
+     items:[{image:ImageUrl,name:string,veg:boolean,_key:string}],
+     price:string,
+     slug:slugType,
+     _createdAt:string,
+     _id:string,
+     _rev:string,
+     _type:string,
+     _updatedAt:string,
+     title:string
+   }
+   
+   
+ 
+  type PlanProps={
+    newMenu:menuDataType[],
+    category:string
+  }
+
+
+const Plan:React.FC<PlanProps> = ({ newMenu, category }) => {
     console.log("newMenu",newMenu)
     console.log("category",category)
     const foundObject = newMenu.filter((obj) => {

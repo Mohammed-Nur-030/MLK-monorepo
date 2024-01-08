@@ -2,8 +2,33 @@ import React from 'react'
 import { urlFor } from '../client'
 
 
-const PlanVeg = ({vegDaysArray,category}) => {
+type  ImageUrl={
+    asset:{_ref:string,_type:string},
+   }
+   type  slugType={
+    current:string,
+    _type:string,
+   }
+   type menuDataType={
+    day:string,
+    namesAndVeg:[{image:ImageUrl,name:string,veg:boolean,_key:string}],
+    price:string,
+    slug:slugType,
+    _createdAt:string,
+    _id:string,
+    _rev:string,
+    _type:string,
+    _updatedAt:string,
+    description?:string,
+  }
+type PlanVegProps={
+    vegDaysArray:menuDataType[],
+    category:string,
+}
+
+const PlanVeg:React.FC<PlanVegProps> = ({vegDaysArray,category}:PlanVegProps) => {
     console.log("inisde plan veg")
+    
   
     console.log(vegDaysArray)
     console.log(category)
@@ -25,7 +50,7 @@ const PlanVeg = ({vegDaysArray,category}) => {
                           {
                             foundObject[0]?.namesAndVeg[0].image ? (
 
-                                foundObject[0]?.namesAndVeg.map((item, index) => { 
+                                foundObject[0]?.namesAndVeg.map((item:{image:ImageUrl,name:string,veg:boolean,_key:string}, index:number) => { 
                                     console.log("item")
                                     console.log(item)
                                   
