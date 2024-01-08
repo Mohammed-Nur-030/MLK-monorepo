@@ -237,7 +237,7 @@ const Menu = ({ menuData, additionalData }) => {
             <h2 className='today-meal-heading py-4 bg-yellow-100 text-slate-900  text-center rounded-t-xl font-semibold flex justify-center items-center text-lg  sm:text-lg md:text-lg lg:text-xl xl:text-2xl px-6  '>
               Handcrafted Special Combo Just For you
               <div className='ml-auto'>
-                {/* <Switch checkedChildren="Non-veg" unCheckedChildren="veg" onChange={handleToggle}  defaultChecked className='bg-green-400 checked:bg-red-400'/> */}
+                 {/* <Switch checkedChildren="Non-veg" unCheckedChildren="veg" onChange={handleToggle}  defaultChecked className='bg-green-400 checked:bg-red-400'/>  */}
               </div>
 
             </h2>
